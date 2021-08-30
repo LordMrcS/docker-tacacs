@@ -1,6 +1,6 @@
 FROM alpine:latest as base
 MAINTAINER David Chidell (dchidell@cisco.com)
-ENV VERSION=201712190728
+ENV VERSION=202104181633
 ENV TAC_PLUS_BIN=/tacacs/sbin/tac_plus
 ENV CONF_FILE=/etc/tac_plus/tac_plus.cfg
 
@@ -25,6 +25,7 @@ COPY tac_user.cfg /etc/tac_plus/tac_user.cfg
 COPY entrypoint.sh /entrypoint.sh 
 
 RUN apk add --no-cache perl perl-digest-md5 perl-ldap && \
+    rm -rf /var/cache/apk/* && \
     chmod u+x /entrypoint.sh
 EXPOSE 49
 ENTRYPOINT ["/entrypoint.sh"]
