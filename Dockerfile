@@ -18,8 +18,8 @@ RUN tar -xjf /tac_plus.tar.bz2 && \
 
 FROM base
 COPY --from=build /tacacs /tacacs
-ADD http://www.pro-bono-publico.de/projects/unpacked/mavis/perl/mavis_tacplus_radius.pl /tacacs/lib/mavis_tacplus_radius.pl
-ADD http://www.pro-bono-publico.de/projects/unpacked/mavis/perl/mavis_tacplus_ldap.pl /tacacs/lib/mavis_tacplus_ldap.pl
+ADD mavis_tacplus_radius.pl /tacacs/lib/mavis_tacplus_radius.pl
+ADD mavis_tacplus_ldap.pl /tacacs/lib/mavis_tacplus_ldap.pl
 RUN chmod u+x /tacacs/lib/mavis_tacplus_ldap.pl && \
     chmod u+x /tacacs/lib/mavis_tacplus_radius.pl
 
