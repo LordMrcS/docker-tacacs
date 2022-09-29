@@ -1,0 +1,11 @@
+version: "3.4"
+services:
+  tacacs:
+    build: .
+    volumes:
+      - ${PWD}/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro
+    environment:
+      - RADIUS-SERVER=${RADIUS-SERVER}:1812
+      - RADIUS-KEY=${RADIUS-KEY}
+    ports:
+      - "49:49"

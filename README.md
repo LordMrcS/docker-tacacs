@@ -4,7 +4,7 @@ This image is a built version of [tac_plus](http://www.pro-bono-publico.de/proje
 a TACACS+ implementation written by Marc Huber.
 
 Various configuration options and components were taken from an existing docker image repo which can be found here:
-https://github.com/lfkeitel/docker-tacacs-plus
+https://github.com/dchidell/docker-tacacs
 
 ## Configuration
 Configuration is stored in two files `tac_base.cfg` and `tac_user.cfg` for the majority of users neither of these need changing should simple, basic TACACS+ testing be required.
@@ -12,35 +12,6 @@ Configuration is stored in two files `tac_base.cfg` and `tac_user.cfg` for the m
 If additional users or parameters are required, the `tac_user.cfg` file should be modified and passed into the container via a docker volume using `-v /path/to/tac_user.cfg:/etc/tac_plus/tac_user.cfg`
 
 If base configuration changes are required, the `tac_base.cfg` file can be altered and included as a docker volume following the above syntax.
-
-Various configuration defaults exist (defined in `tac_user.cfg`)  
-**TACACS Key:** `ciscotacacskey`  
-**Priv 15 User (IOS):** `iosadmin` **password:** `cisco`  
-**Priv 0 User (IOS):** `iosuser` **password:** `cisco`
-**Network Admin (NXOS):** `nxosadmin` **password:** `cisco`  
-**Network User (NXOS):** `nxosuser` **password:** `cisco`  
-**Read-write User (ACI):** `aciadmin` **password:** `cisco`  
-**Read-only User (ACI):** `aciro` **password:** `cisco`  
-**Show User:** `showuser` **password:** `cisco`  
-
-The following cisco IOS configuration was used in the development of this image:
-```
-aaa new-model
-aaa authentication login default group tacacs+ local
-
-aaa authorization exec default group tacacs+ local
-aaa authorization commands 0 default group tacacs+
-aaa authorization commands 1 default group tacacs+
-aaa authorization commands 15 default group tacacs+
-
-aaa accounting exec default start-stop group tacacs+
-aaa accounting commands 0 default start-stop group tacacs+
-aaa accounting commands 1 default start-stop group tacacs+
-aaa accounting commands 15 default start-stop group tacacs+
-
-tacacs-server host <ip> key <key>
-```
-
 
 ## Usage
 By default all logs (including detailed information on authorization and authentication) are sent to stdout, meaning they're available to view via `docker logs` once the container is operational. This log contains all AAA information.

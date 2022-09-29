@@ -6,8 +6,7 @@ name: Docker
 # documentation.
 
 on:
-  schedule:
-    - cron: '26 11 * * *'
+  push:
   workflow_dispatch:
   
 env:
