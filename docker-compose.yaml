@@ -1,7 +1,7 @@
 version: "3.4"
 services:
   tacacs:
-    build: .
+    image: ghcr.io/lordmrcs/docker-tacacs:master
     volumes:
       - ${PWD}/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro
     environment:
