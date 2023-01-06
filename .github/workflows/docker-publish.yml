@@ -6,7 +6,17 @@ name: Docker
 # documentation.
 
 on:
+  # Runs on pushes targeting the default branch
   push:
+    branches: ["master"]
+    paths-ignore:
+     - ".github/**"
+     - "**.md"
+  pull_request:
+    branches: ["master"]
+    paths-ignore:
+     - ".github/**"
+     - "**.md"
   workflow_dispatch:
 
 env:
