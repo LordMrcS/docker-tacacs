@@ -4,7 +4,7 @@ This image is a built version of [tac_plus](http://www.pro-bono-publico.de/proje
 a TACACS+ implementation written by Marc Huber.
 
 Various configuration options and components were taken from an existing docker image repo which can be found here:
-https://github.com/dchidell/docker-tacacs
+https://github.com/lordmrcs/docker-tacacs
 
 ## Configuration
 Configuration is stored in two files `tac_base.cfg` and `tac_user.cfg` for the majority of users neither of these need changing should simple, basic TACACS+ testing be required.
@@ -22,23 +22,23 @@ TACACS+ uses port 49. This is exposed by the container, but will require forward
 
 Example - Running the default container for a quick test and inspecting the logs:
 ```
-docker run -it --rm -p 49:49 dchidell/docker-tacacs
+docker run -it --rm -p 49:49 lordmrcs/docker-tacacs
 ```  
 
 Example - Deamonise the container and live-view basic logs after a while:
 ```
-docker run -itd --name=tacacs -p 49:49 dchidell/docker-tacacs
+docker run -itd --name=tacacs -p 49:49 lordmrcs/docker-tacacs
 docker exec tacacs tail -f /var/log/tac_plus.log
 ```  
 
 Example - Deamonise the container and live-view all logs after a while:
 ```
-docker run -itd --name=tacacs -p 49:49 dchidell/docker-tacacs
+docker run -itd --name=tacacs -p 49:49 lordmrcs/docker-tacacs
 docker logs -f tacacs
 ```  
 
 Example - Daemonise the container with a modified config file and live-view all logs after a while:
 ```
-docker run -itd --name=tacacs -v /path/to/my/config/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro -p 49:49 dchidell/docker-tacacs
+docker run -itd --name=tacacs -v /path/to/my/config/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro -p 49:49 lordmrcs/docker-tacacs
 docker logs -f tacacs
 ```
