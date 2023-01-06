@@ -27,7 +27,7 @@ docker run -it --rm -p 49:49 ghcr.io/lordmrcs/docker-tacacs:master
 
 Example - Deamonise the container and live-view basic logs after a while:
 ```
-docker run -itd --name=tacacs -p 49:49 lordmrcs/docker-tacacs
+docker run -itd --name=tacacs -p 49:49 ghcr.io/lordmrcs/docker-tacacs:master
 docker exec tacacs tail -f /var/log/tac_plus.log
 ```  
 
