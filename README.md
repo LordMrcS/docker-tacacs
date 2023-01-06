@@ -22,7 +22,7 @@ TACACS+ uses port 49. This is exposed by the container, but will require forward
 
 Example - Running the default container for a quick test and inspecting the logs:
 ```
-docker run -it --rm -p 49:49 lordmrcs/docker-tacacs
+docker run -it --rm -p 49:49 ghcr.io/lordmrcs/docker-tacacs:master
 ```  
 
 Example - Deamonise the container and live-view basic logs after a while:
@@ -33,12 +33,12 @@ docker exec tacacs tail -f /var/log/tac_plus.log
 
 Example - Deamonise the container and live-view all logs after a while:
 ```
-docker run -itd --name=tacacs -p 49:49 lordmrcs/docker-tacacs
+docker run -itd --name=tacacs -p 49:49 ghcr.io/lordmrcs/docker-tacacs:master
 docker logs -f tacacs
 ```  
 
 Example - Daemonise the container with a modified config file and live-view all logs after a while:
 ```
-docker run -itd --name=tacacs -v /path/to/my/config/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro -p 49:49 lordmrcs/docker-tacacs
+docker run -itd --name=tacacs -v /path/to/my/config/tac_user.cfg:/etc/tac_plus/tac_user.cfg:ro -p 49:49 ghcr.io/lordmrcs/docker-tacacs:master
 docker logs -f tacacs
 ```
