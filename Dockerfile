@@ -28,7 +28,7 @@ RUN mkdir /tacacs/etc/radiusclient && \
     tar xfv dic.tar.gz -C /tacacs/etc/radiusclient/ && \
     rm dic.tar.gz
 
-RUN apk add --no-cache perl perl-digest-md5 perl-ldap perl-authen-radius freeradius-client pcre && \
+RUN apk add --no-cache perl perl-digest-md5 perl-ldap perl-authen-radius freeradius-client pcre2 && \
     rm -rf /var/cache/apk/*
 
 COPY entrypoint.sh /entrypoint.sh 
