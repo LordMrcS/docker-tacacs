@@ -8,11 +8,11 @@ ENV USER_FILE=/etc/tac_plus/tac_user.cfg
 
 FROM base as build
 RUN apk add --no-cache \
-    build-base bzip2 perl perl-digest-md5 perl-ldap freeradius-client-dev perl-authen-radius pcre-dev
-ADD http://www.pro-bono-publico.de/projects/src/DEVEL.$VERSION.tar.bz2 /tac_plus.tar.bz2
-RUN tar -xjf /tac_plus.tar.bz2 && \
-    cd /PROJECTS && \
-    ./configure --with-freeradius --with-pcre --prefix=/tacacs && \
+    build-base bzip2 perl perl-digest-md5 perl-ldap freeradius-client-dev perl-authen-radius pcre2-dev unzip
+ADD https://github.com/MarcJHuber/event-driven-servers/archive/refs/heads/master.zip /master.zip
+RUN unzip /master.zip && \
+    cd /event-driven-servers-master && \
+    ./configure tac_plus --with-freeradius --with-pcre2 --prefix=/tacacs && \
     make && \
     make install
 
